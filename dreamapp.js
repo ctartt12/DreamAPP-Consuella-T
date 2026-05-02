@@ -21,8 +21,8 @@ let secureChecksList = [
     // Check if the new password contains at least one lowercase letter
     /[a-z]/.test(newPassword),
     // Check for no repeated characters (no character repeated 2+ times in a row)
-    !/(.)\1{2,}/.test(newPassword).
-];
+    !/(.)\1+/.test(newPassword)
+]
 
 
 let isSecure = secureChecksList.every(check => check);     // Check if all the security criteria are met by using the every() method on the secureChecksList array
@@ -32,7 +32,7 @@ if (isBadOnBlackList) {
     console.log("Your password is weak, please follow the guidelines and try again.");
     if (!shownRepeatMessage && !secureChecksList[4]) {  // Check if the no repeats rule failed and message not shown yet
         console.log("Avoid repeated characters like 'aa' or '11'.");
-        shownRepeatMessage = true; // this will ensure the message shows only once ending the while loop when the password is strong and secure.
+        shownRepeatMessage = true; // this will ensure the message shows only once ending the while loop when the password is strong and secure
     }
 }else {
     console.log("Your password is strong and secure!");
